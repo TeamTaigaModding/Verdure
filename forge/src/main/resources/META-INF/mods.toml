@@ -1,0 +1,31 @@
+modLoader = "javafml"
+loaderVersion = "[40,)"
+license = "GPLv3"
+
+[[mods]]
+modId = "${id}"
+version = "${version}"
+displayName = "${name}"
+authors = "ebo2022, Dringles"
+description = "A small mod that adds a biome to the world."
+
+[[dependencies.${id}]]
+modId = "forge"
+mandatory = true
+versionRange = "[40,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${id}]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.18.2,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${id}]]
+modId = "pollen"
+mandatory = true
+versionRange = "[1.4.9,)"
+ordering = "BEFORE"
+side = "BOTH"
