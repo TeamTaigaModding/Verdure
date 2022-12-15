@@ -2,7 +2,8 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
-		"cross": "verdure:block/blue_morning_glory"
+		"cross": "verdure:block/blue_morning_glory",
+		"particle": "verdure:block/blue_morning_glory"
 	},
 	"elements": [
 		{

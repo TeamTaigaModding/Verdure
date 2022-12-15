@@ -1,17 +1,17 @@
 {
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
-	"shade": false,
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "verdure:block/pasture_wildflowers",
-		"particle": "verdure:block/pasture_wildflowers"
+		"0": "verdure:block/pasture_perennials",
+		"particle": "verdure:block/pasture_perennials"
 	},
 	"elements": [
 		{
 			"from": [-1, 0, 8],
 			"to": [17, 16, 8],
 			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8]},
+			"shade": false,
 			"faces": {
 				"north": {"uv": [16, 8, 7, 16], "texture": "#0"},
 				"east": {"uv": [7, 8, 7, 12], "texture": "#0"},
@@ -25,6 +25,7 @@
 			"from": [-1, 0, 8],
 			"to": [17, 16, 8],
 			"rotation": {"angle": -45, "axis": "y", "origin": [8, 8, 8]},
+			"shade": false,
 			"faces": {
 				"north": {"uv": [16, 8, 7, 16], "texture": "#0"},
 				"east": {"uv": [7, 8, 7, 12], "texture": "#0"},
