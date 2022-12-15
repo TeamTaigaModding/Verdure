@@ -9,6 +9,7 @@ import dev.ebo2022.verdure.core.Verdure;
 import dev.ebo2022.verdure.core.registry.util.RegistryUtil;
 import gg.moonflower.pollen.api.platform.Platform;
 import gg.moonflower.pollen.api.registry.PollinatedRegistry;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
@@ -16,16 +17,15 @@ import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.TreePlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
@@ -72,7 +72,7 @@ public class VerdureFeatures {
         public static final Supplier<ConfiguredFeature<BlockStateConfiguration, ?>> WHITE_MORNING_GLORIES = CONFIGURED_FEATURES.register("white_morning_glories", () -> new ConfiguredFeature<>(LARGE_LAND_PATCH.get(), new BlockStateConfiguration(VerdureBlocks.WHITE_MORNING_GLORY.get().defaultBlockState())));
         public static final Supplier<ConfiguredFeature<BlockStateConfiguration, ?>> BLUE_MORNING_GLORIES = CONFIGURED_FEATURES.register("blue_morning_glories", () -> new ConfiguredFeature<>(LARGE_LAND_PATCH.get(), new BlockStateConfiguration(VerdureBlocks.BLUE_MORNING_GLORY.get().defaultBlockState())));
         public static final Supplier<ConfiguredFeature<DiskConfiguration, ?>> COARSE_DIRT_PATCH = CONFIGURED_FEATURES.register("coarse_dirt_patch", () -> new ConfiguredFeature<>(VerdureFeatures.DITHERED_DISK.get(), new DiskConfiguration(Blocks.COARSE_DIRT.defaultBlockState(), UniformInt.of(3, 5), 1, List.of(Blocks.DIRT.defaultBlockState(), Blocks.GRASS_BLOCK.defaultBlockState(), Blocks.PODZOL.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), Blocks.MYCELIUM.defaultBlockState()))));
-
+        public static final Supplier<ConfiguredFeature<?, ?>> ROCK = CONFIGURED_FEATURES.register("rock", () -> new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.ROCK.get()))));
     }
 
     public static class Placed {
@@ -88,7 +88,10 @@ public class VerdureFeatures {
         public static final Supplier<PlacedFeature> BALMY_WILDFLOWERS = register("balmy_wildflowers", RegistryUtil.config(Configured.BALMY_WILDFLOWERS, "balmy_wildflowers"), List.of(RarityFilter.onAverageOnceEvery(5), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
         public static final Supplier<PlacedFeature> GLOOM_WILDFLOWERS = register("gloom_wildflowers", RegistryUtil.config(Configured.GLOOM_WILDFLOWERS, "gloom_wildflowers"), List.of(RarityFilter.onAverageOnceEvery(5), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
         public static final Supplier<PlacedFeature> PASTURE_WILDFLOWERS = register("pasture_wildflowers", RegistryUtil.config(Configured.PASTURE_WILDFLOWERS, "pasture_wildflowers"), List.of(RarityFilter.onAverageOnceEvery(5), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
-        
+        public static final Supplier<PlacedFeature> ROCK = register("rock", RegistryUtil.config(Configured.ROCK, "rock"), List.of(InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(List.of(Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.PODZOL, Blocks.COARSE_DIRT, Blocks.SAND), new BlockPos(0, -1, 0))), BiomeFilter.biome()));
+
+        public static final ResourceKey<PlacedFeature> ROCK_KEY = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,Verdure.location("rock"));
+
         public static Supplier<PlacedFeature> register(String id, Holder<? extends ConfiguredFeature<?, ?>> config, List<PlacementModifier> modifiers) {
             return PLACED_FEATURES.register(id, () -> new PlacedFeature(Holder.hackyErase(config), modifiers));
         }

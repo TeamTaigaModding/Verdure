@@ -2,6 +2,10 @@ package dev.ebo2022.verdure.core.registry;
 
 import dev.ebo2022.verdure.common.block.CarpetFlowerBlock;
 import dev.ebo2022.verdure.common.block.FullFlowerBlock;
+import dev.ebo2022.verdure.common.block.PebblesBlock;
+import dev.ebo2022.verdure.common.block.RockBlock;
+import dev.ebo2022.verdure.core.Verdure;
+import dev.ebo2022.verdure.core.registry.util.ModSoundType;
 import gg.moonflower.pollen.api.registry.PollinatedBlockRegistry;
 import gg.moonflower.pollen.api.registry.PollinatedRegistry;
 import net.minecraft.world.effect.MobEffects;
@@ -28,6 +32,9 @@ public class VerdureBlocks {
     public static final Supplier<Block> GLOOM_WILDFLOWERS = BLOCKS.registerWithItem("gloom_wildflowers", () -> new FullFlowerBlock(MobEffects.ABSORPTION, 8, Properties.FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> PASTURE_WILDFLOWERS = BLOCKS.registerWithItem("pasture_wildflowers", () -> new FullFlowerBlock(MobEffects.ABSORPTION, 8, Properties.FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
+
+    public static final Supplier<Block> PEBBLES = BLOCKS.registerWithItem("pebbles", () -> new PebblesBlock(BlockBehaviour.Properties.of(Material.DECORATION).noOcclusion().sound(ModSoundType.ROCK).instabreak().noCollission()), new Item.Properties().tab(Verdure.TAB));
+    public static final Supplier<Block> ROCK = BLOCKS.registerWithItem("rock", () -> new RockBlock(BlockBehaviour.Properties.of(Material.DECORATION).noOcclusion().sound(ModSoundType.ROCK).instabreak().noCollission()), new Item.Properties().tab(Verdure.TAB));
     public static final class Properties {
         public static final BlockBehaviour.Properties FLOWER = BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().noOcclusion().sound(SoundType.GRASS);
     }

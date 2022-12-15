@@ -1,7 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "verdure:block/rock2_1"
+		"0": "verdure:block/rock2_1",
+		"particle": "verdure:block/rock2_1"
 	},
 	"elements": [
 		{

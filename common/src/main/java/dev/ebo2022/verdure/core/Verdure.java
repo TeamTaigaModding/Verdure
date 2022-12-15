@@ -1,13 +1,15 @@
 package dev.ebo2022.verdure.core;
 
-import dev.ebo2022.verdure.common.biome.BiomeModifiers;
 import dev.ebo2022.verdure.core.registry.VerdureBlocks;
 import dev.ebo2022.verdure.core.registry.VerdureFeatures;
 import dev.ebo2022.verdure.core.registry.VerdureItems;
+import gg.moonflower.pollen.api.client.util.CreativeModeTabBuilder;
 import gg.moonflower.pollen.api.platform.Platform;
 import gg.moonflower.pollen.api.registry.client.RenderTypeRegistry;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 
 /**
  * @author ebo2022
@@ -22,7 +24,7 @@ public class Verdure {
             .commonInit(Verdure::commonInit)
             .commonPostInit(Verdure::commonPostInit)
             .build();
-
+    public static final CreativeModeTab TAB = CreativeModeTabBuilder.builder(location("tab")).setIcon(() -> new ItemStack(VerdureBlocks.ROCK.get())).build();
     public static void clientInit() {
     }
 
@@ -36,7 +38,6 @@ public class Verdure {
     }
 
     public static void commonInit() {
-        BiomeModifiers.init();
         VerdureBlocks.BLOCKS.register(PLATFORM);
         VerdureItems.ITEMS.register(PLATFORM);
         VerdureFeatures.FEATURES.register(PLATFORM);
