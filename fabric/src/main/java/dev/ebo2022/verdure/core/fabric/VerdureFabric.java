@@ -19,6 +19,7 @@ public class VerdureFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         Verdure.PLATFORM.setup();
-        BiomeModifications.addFeature(BiomeSelectors.categories(Biome.BiomeCategory.FOREST, Biome.BiomeCategory.TAIGA, Biome.BiomeCategory.SAVANNA, Biome.BiomeCategory.SWAMP, Biome.BiomeCategory.PLAINS), GenerationStep.Decoration.VEGETAL_DECORATION, VerdureFeatures.Placed.ROCK_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.categories(Biome.BiomeCategory.FOREST, Biome.BiomeCategory.TAIGA, Biome.BiomeCategory.SAVANNA, Biome.BiomeCategory.SWAMP, Biome.BiomeCategory.PLAINS, Biome.BiomeCategory.JUNGLE), GenerationStep.Decoration.VEGETAL_DECORATION, VerdureFeatures.Placed.ROCK_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.categories(Biome.BiomeCategory.FOREST, Biome.BiomeCategory.TAIGA, Biome.BiomeCategory.SAVANNA, Biome.BiomeCategory.SWAMP, Biome.BiomeCategory.PLAINS, Biome.BiomeCategory.JUNGLE), GenerationStep.Decoration.VEGETAL_DECORATION, VerdureFeatures.Placed.DIRT_PATCH_KEY);
     }
 }
